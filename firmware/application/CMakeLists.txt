@@ -274,6 +274,7 @@ set(CPPSRC
 	apps/ui_recon_settings.cpp
 	apps/tpms_app.cpp
 	apps/tpms_app.cpp
+	apps/ui_apt_rx.cpp
 	protocols/aprs.cpp
 	protocols/ax25.cpp
 	protocols/bht.cpp
