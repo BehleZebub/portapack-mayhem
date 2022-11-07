@@ -69,6 +69,7 @@
 #include "ui_playlist.hpp"
 #include "ui_view_wav.hpp"
 #include "ui_whipcalc.hpp"
+#include "ui_apt_rx.hpp"
 
 //#include "acars_app.hpp"
 #include "ais_app.hpp"
