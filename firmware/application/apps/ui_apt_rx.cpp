@@ -24,19 +24,6 @@ namespace ui
             &options_freq,
             &field_freq
         });
-//        progressBar_progress.set_max(PROGRESS_MAX);          // Set max for progress bar
-//        button_helloWorld.on_select = [this](Button &){      // Button logic
-//            if(progress < 100) {
-//                numberField_progress.set_value(100);         // Because numberField_progress has an on_change function,
-//            } else {                                         // progressBar_progress will update automatically.
-//                numberField_progress.set_value(0);
-//            }
-//        };
-//        numberField_progress.on_change = [this](int32_t v) { // When NumberField is changed
-//            progress = v;
-//            progressBar_progress.set_value(progress);
-//        };
-//        timestamp.set_seconds_enabled(true);                 // DateTime enable seconds
 
         options_freq.on_change = [this](size_t n, OptionsField::value_t v)
         {
