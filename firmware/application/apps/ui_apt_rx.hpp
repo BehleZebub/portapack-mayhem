@@ -2,6 +2,7 @@
 #include "ui_widget.hpp"
 #include "ui_navigation.hpp"
 #include "string_format.hpp"
+#include "ui_receiver.hpp"
 
 // Define a constant
 #define PROGRESS_MAX 100
@@ -16,7 +17,7 @@ namespace ui
     	void focus() override;                              // ui::View function override
 
         APTRXView(NavigationView &nav);                     // App class init function declaration
-        std::string title() const override { 
+        std::string title() const override {
             return "APT RX";                                // App Title
         };
 
@@ -25,48 +26,59 @@ namespace ui
         // Private declarations
         void update();                                      // Function declaration
         MessageHandlerRegistration message_handler_update{  // Example, not required: MessageHandlerRegistration class
-            Message::ID::DisplayFrameSync,                  // relays machine states to your app code. Every time you 
+            Message::ID::DisplayFrameSync,                  // relays machine states to your app code. Every time you
             [this](const Message *const) {                  // get a  DisplayFrameSync message the update() function will
-                this->update();                             // be triggered. 
+                this->update();                             // be triggered.
             }
         };
 
         // Variables
-        uint32_t progress = 0; 
+        int32_t asdf = 0;
 
         // Widgets
         // Note: Usable screen space is 240x304px
-        // Note: Each char takes up 8x8px so you can multiply 
+        // Note: Each char takes up 8x8px so you can multiply
         //       the amount of spaces and rows you want by 8.
         //       This gives you 30x38 char
 
-        Button button_helloWorld{
-            {70, 128, 100, 24},            // Coordinates are: int:x (px), int:y (px), int:width (px), int:height (px)
-            "Hello World!"                 // Title
+        Labels labels_gain {
+            { { 0 * 8, 2 * 8 }, "LNA:   VGA:   AMP:", Color::light_grey() }
         };
 
-        LiveDateTime timestamp {
-	    {6*8, 22*8, 19*8, 20 }         // Coordinates and Dimensions
-	};
-
-        Labels label_progress {
-            {{8*8, 33*8},                  // Coordinates are: int:x(px), int:y(px)
-            "Progress:     %",             // Title
-            Color::light_grey()}           // Title color
+        LNAGainField field_lna {
+            { 4 * 8, 1 * 16 }
         };
 
-        NumberField numberField_progress {
-            {18*8, 33*8},                  // Coordinates
-            3,                             // Length of number
-            {0,PROGRESS_MAX},              // Range
-            1,                             // Step
-            '0',                           // Fill Char
-            false                          // Loop?
+        VGAGainField field_vga {
+            { 11 * 8, 1 * 16 }
         };
 
-        ProgressBar progressBar_progress {
-            {2*8, 35*8, 208, 16 },         // Coordinates and Dimensions
+        RFAmpField field_rf_amp {
+            { 18 * 8, 1 * 16 }
         };
-        
+
+//        RSSI rssi {
+//            { 20 * 8, 2 * 4, 10 * 8, 8 },
+//        };
+
+        Labels labels_freq {
+            { { 0 * 8, 0 * 8 }, "Freq           NOAA:", Color::light_grey() }
+        };
+
+        OptionsField options_freq {
+            { 22 * 8, 0 * 16 },
+            3,
+            {
+                { " 15", 137.62 },
+                { " 18", 2 },
+                { " 19", 3 }
+            }
+        };
+
+        FrequencyField field_freq {
+            { 5 * 8, 0 * 16 },
+        };
+
+
     };
-} 
+}
