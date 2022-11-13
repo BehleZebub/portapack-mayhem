@@ -39,6 +39,22 @@ namespace ui
 
     void APTRXView::update()                                 // Every time you get a DisplayFrameSync message this
     {                                                        // function will be ran.
-         // Message code
+    // Message code
+    // this will create a nice pattern on screen to test dynamic image creation.
+    // I tried to work with bitmap widgets but they are too static for dynamic pixel data.
+
+        std::array<ui::Color, 220> px_color;                // create line buffer with 220px.
+    // clear screen
+        //display.fill_rectangle(Rect(10, 60, 220, 220), Color::white());
+
+    // this loops through all avaiable pixels and calculates the image.
+        for(i=0;i<220;i++)
+        {
+            for(j=0;j<220;j++)
+            {
+                px_color[j]=(i*j)%16;
+            }
+            display.draw_pixels({10,i+60,220,1},px_color);
+        }
     }
 }
