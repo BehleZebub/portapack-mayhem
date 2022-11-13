@@ -34,6 +34,8 @@ namespace ui
 
         // Variables
         int32_t asdf = 0;
+        int32_t i=0;
+        int32_t j=0;
 
         // Widgets
         // Note: Usable screen space is 240x304px
@@ -57,6 +59,7 @@ namespace ui
             { 18 * 8, 1 * 16 }
         };
 
+        // maybe activate this one later.
 //        RSSI rssi {
 //            { 20 * 8, 2 * 4, 10 * 8, 8 },
 //        };
@@ -80,5 +83,5 @@ namespace ui
         };
 
 
-    };
-}
+    };  // class APTRXView
+}       // namespace ui
